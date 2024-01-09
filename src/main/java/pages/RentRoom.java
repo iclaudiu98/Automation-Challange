@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class RentRoom {
     private WebDriver driver;
@@ -12,6 +14,16 @@ public class RentRoom {
     private By lastNameField = By.name("lastname");
     private By emailField = By.name("email");
     private By phoneField = By.name("phone");
+
+    private By nameContactUs = By.id("name");
+    private By emailContactUs = By.id("email");
+    private By phoneContactUs = By.id("phone");
+    private By subjectContactUs = By.id("subject");
+
+    private By messageContactUs = By.id("description");
+
+    private By submitContactUs = By.id("submitContact");
+
 
     public RentRoom(WebDriver driver) {
         this.driver = driver;
@@ -44,6 +56,45 @@ public class RentRoom {
 
     public void clickNextButton() {
         driver.findElement(nextButton).click();
+    }
+
+    public String addNameContactUs(String name){
+        driver.findElement(nameContactUs).sendKeys(name);
+        return name;
+    }
+
+    public String addPhoneContactUs(String phone){
+        driver.findElement(phoneContactUs).sendKeys(phone);
+        return phone;
+    }
+
+    public String addSubjectContactUs(String subject){
+        driver.findElement(subjectContactUs).sendKeys(subject);
+        return subject;
+    }
+
+    public String addEmailContactUs(String email){
+        driver.findElement(emailContactUs).sendKeys(email);
+        return email;
+    }
+
+    public String addMesssageContactUs(String message){
+        driver.findElement(messageContactUs).sendKeys(message);
+        return message;
+    }
+
+    public void submitContactUsMessage(){
+        driver.findElement(submitContactUs).click();
+    }
+
+    public void selectDays(){
+        WebElement startDate = driver.findElement(By.xpath("//button[contains(text(),'05')]"));
+        WebElement endDate = driver.findElement(By.xpath("//button[contains(text(),'09')]"));
+        Actions actions = new Actions(driver);
+        startDate.getLocation();
+        endDate.getLocation();
+        actions.dragAndDrop(startDate,endDate);
+
     }
 
 }

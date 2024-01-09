@@ -8,4 +8,7 @@ public class TestData {
     public static String username = "admin";
     public static String password = "password";
 
+    public static String NameContactUs = "Claudiu Iacob";
+    public static String SubjectContactUs = "Test Case to verify Contact us form";
+
 }
